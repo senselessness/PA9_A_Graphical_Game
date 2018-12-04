@@ -1,12 +1,8 @@
 #include "Tree.h"
-class MainTree
+class MainT
 {
 public:
-	MainTree();
-	~MainTree();
-	void RunApp();
-private:
-	void Choice();
-	void TreeFrame();
-};
 
+private:
+
+};

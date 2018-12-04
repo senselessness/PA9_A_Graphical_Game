@@ -153,10 +153,7 @@
     <ClCompile Include="Tree.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Healthy.h" />
     <ClInclude Include="MainT.h" />
-    <ClInclude Include="Seed.h" />
-    <ClInclude Include="Sick.h" />
     <ClInclude Include="Tree.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

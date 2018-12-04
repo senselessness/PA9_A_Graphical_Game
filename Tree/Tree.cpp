@@ -88,12 +88,21 @@ int Tree::getLoop()
 {
 	return NumberLoop;
 }
+void Tree::setHealth(int Healthlvl, int index)
+{
+	HealthTrack[index - 1] = Healthlvl;
+}
+int Tree::getHealth(int index)
+{
+	return HealthTrack[index - 1];
+}
 void Tree::RunTreeBuild()
 {
 	runIt();
 }
 void Tree::runIt()
 {
+		int i = 1;
 	sf::RenderWindow window(sf::VideoMode(1000, 700), "SFML works!");
 	while (window.isOpen())
 	{
@@ -114,20 +123,27 @@ void Tree::runIt()
 				}
 			}
 		}
-		Render(window);
+			if (i < 10)
+			{
+				//Base it off of getLoop() for Array of Health to get a more symmetrical answer.
+				setHealth(rand() % 3 + 1, i);
+				setLoop(i);
+				Render(window);
+			}
 		//window.display();
 		//system("pause");
+		i++;
 	}
 }
-void Tree::drawTree(int iteration, const sf::Vector2f& rootPosition, double rootRotation, sf::RenderWindow& window)
+void Tree::drawTree(int iteration, const sf::Vector2f& rootPosition, double rootRotation, sf::RenderWindow& window, bool BROL)
 {
 	//Store in vector then clear at the end. No risk to others?
 	int Health = 0;
-	Health = rand() % 3 + 1;
+	Health = getHealth(iteration);
 	//cout << Health << endl;
 	//Health = TestHEandUN();
 	//TestStep();
-	if (iteration == 10 /*|| function = false*/)
+	if (iteration == getLoop() /*|| function = false*/)
 	{
 	// 10 times simulation over and flowers blossom
 	//if true then done
@@ -142,15 +158,15 @@ void Tree::drawTree(int iteration, const sf::Vector2f& rootPosition, double root
 	if (Health == 1)
 	{
 		///Function Generate Healthy Values
-		setLAngle(25);
-		setRAngle(45);
-		setWidth(15);
-		setHeight(100);
+		setLAngle(25 + (std::rand() % (35 - 25 + 1)));
+		setRAngle(35 + (std::rand() % (45 - 35 + 1)));
+		setWidth(15 + (std::rand() % (20 - 15 + 1)));
+		setHeight(100 + (std::rand() % (120 - 100 + 1)));
 		sf::Color Green = sf::Color(70, 190, 63);
 		setColorStem(Green);
 		sf::Color Purple = sf::Color(240, 0, 240);
 		setColorFLower(Purple);
-		setScalingVariable(0.85);
+		setScalingVariable(0.9);
 
 	}
 	else if (Health == 2)
@@ -160,15 +176,15 @@ void Tree::drawTree(int iteration, const sf::Vector2f& rootPosition, double root
 	else
 	{
 		///Function for unhealthy values;
-		setLAngle(15);
-		setRAngle(40);
-		setWidth(15);
-		setHeight(100);
-		sf::Color Green = sf::Color(70, 190, 63);
-		setColorStem(Green);
-		sf::Color Purple = sf::Color(240, 0, 240);
-		setColorFLower(Purple);
-		setScalingVariable(0.9);
+		setLAngle(10 + ( std::rand() % ( 20 - 10 + 1 )));
+		setRAngle(35 + (std::rand() % (35 - 25 + 1)));
+		setWidth(10 + (std::rand() % (15 - 10 + 1)));
+		setHeight(70 + (std::rand() % (80 - 70 + 1)));
+		sf::Color Yellow = sf::Color(100, 115, 50);
+		setColorStem(Yellow);
+		sf::Color Brown = sf::Color(48, 48, 37);
+		setColorFLower(Brown);
+		setScalingVariable(0.8);
 	}
 	//Two formulas. Procedural and direct generation.
 	//He will run time.
@@ -189,8 +205,8 @@ void Tree::drawTree(int iteration, const sf::Vector2f& rootPosition, double root
 	double x = rootPosition.x - std::sin((rootRotation*3.14) / 180)*height;
 	double y = rootPosition.y + std::cos((rootRotation*3.14) / 180)*height;
 	//  std::cout << rootPosition.x << " vs " << rootPosition.x + std::sin((rootRotation*3.1)/180)*width << std::endl;
-	drawTree(iteration+1,sf::Vector2f(x, y), rootRotation + LAngle, window);
-	drawTree(iteration+1,sf::Vector2f(x, y), rootRotation - RAngle, window);
+	drawTree(iteration+1,sf::Vector2f(x, y), rootRotation + LAngle, window, true);
+	drawTree(iteration+1,sf::Vector2f(x, y), rootRotation - RAngle, window, false);
 
 }
 void Tree::Render(sf::RenderWindow& window)
@@ -202,12 +218,15 @@ void Tree::Render(sf::RenderWindow& window)
 	double x = StartPoint.x - std::sin((180 * 3.14) / 180) *Length;
 	double y = StartPoint.y + std::cos((180 * 3.14) / 180) *Length;
 	window.draw(rect);
-	drawTree(1 ,sf::Vector2f(x, y), 180 - LAngle, window);
-	drawTree(1 ,sf::Vector2f(x, y), 180 + RAngle, window);
+	drawTree(1 ,sf::Vector2f(x, y), 180 - LAngle, window, true);
+	drawTree(1 ,sf::Vector2f(x, y), 180 + RAngle, window, false);
 	cout << "Render" << endl;
 	window.display();
 	system("pause");
+	if (getLoop() != 9)
+	{
 	window.clear();
+	}
 }
 void Tree::GrowFlowers(const sf::Vector2f& rootPosition, sf::RenderWindow& window)
 {

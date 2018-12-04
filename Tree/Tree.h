@@ -30,6 +30,8 @@ public:
 	void setColorFLower(sf::Color Flower);
 	void setColorStem(sf::Color Stem);
 	void setLoop(int AOccured);
+	void setHealth(int Healthlvl, int index);
+	int getHealth(int index);
 	int getLoop();
 	double getHeight();
 	double getWidth();
@@ -44,7 +46,7 @@ public:
 	void TestStep();
 protected:
 	void runIt();
-	void drawTree(int iteration, const sf::Vector2f& rootPosition, double rootRotation, sf::RenderWindow& window);
+	void drawTree(int iteration, const sf::Vector2f& rootPosition, double rootRotation, sf::RenderWindow& window, bool BROL);
 	void Render(sf::RenderWindow& window);
 	void GrowFlowers(const sf::Vector2f& rootPosition, sf::RenderWindow& window);
 private:
@@ -57,5 +59,6 @@ private:
 	double Length;
 	sf::Vector2f StartPoint;
 	int NumberLoop;
+	int HealthTrack[9];
 
 };

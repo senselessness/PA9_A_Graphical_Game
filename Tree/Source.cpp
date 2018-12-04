@@ -7,7 +7,7 @@ int main(void)
 	//Run.setRAngle(35);
 	Run.setWidth(15);
 	Run.setHeight(100);
-	Run.setLoop(10);
+	//Run.setLoop(10);
 	//Run.setScalingVariable(0.85);
 	sf::Color Green = sf::Color(70, 190, 63);
 	Run.setColorStem(Green);

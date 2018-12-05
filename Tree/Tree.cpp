@@ -90,11 +90,11 @@ int Tree::getLoop()
 }
 void Tree::setHealth(int Healthlvl, int index)
 {
-	HealthTrack[index - 1] = Healthlvl;
+	HealthTrack[index] = Healthlvl;
 }
 int Tree::getHealth(int index)
 {
-	return HealthTrack[index - 1];
+	return HealthTrack[index-1];
 }
 void Tree::RunTreeBuild()
 {
@@ -123,13 +123,10 @@ void Tree::runIt()
 				}
 			}
 		}
-			if (i < 10)
-			{
 				//Base it off of getLoop() for Array of Health to get a more symmetrical answer.
 				setHealth(rand() % 3 + 1, i);
 				setLoop(i);
 				Render(window);
-			}
 		//window.display();
 		//system("pause");
 		i++;
@@ -137,12 +134,12 @@ void Tree::runIt()
 }
 void Tree::drawTree(int iteration, const sf::Vector2f& rootPosition, double rootRotation, sf::RenderWindow& window, bool BROL)
 {
+	Test T =  Test();
 	//Store in vector then clear at the end. No risk to others?
 	int Health = 0;
 	Health = getHealth(iteration);
 	//cout << Health << endl;
-	//Health = TestHEandUN();
-	//TestStep();
+	//Health = T.TestHEandUN();
 	if (iteration == getLoop() /*|| function = false*/)
 	{
 	// 10 times simulation over and flowers blossom
@@ -158,10 +155,10 @@ void Tree::drawTree(int iteration, const sf::Vector2f& rootPosition, double root
 	if (Health == 1)
 	{
 		///Function Generate Healthy Values
-		setLAngle(25 + (std::rand() % (35 - 25 + 1)));
-		setRAngle(35 + (std::rand() % (45 - 35 + 1)));
-		setWidth(15 + (std::rand() % (20 - 15 + 1)));
-		setHeight(100 + (std::rand() % (120 - 100 + 1)));
+		//setLAngle(25 + (std::rand() % (35 - 25 + 1)));
+		//setRAngle(35 + (std::rand() % (45 - 35 + 1)));
+		//setWidth(15 + (std::rand() % (20 - 15 + 1)));
+		//setHeight(100 + (std::rand() % (120 - 100 + 1)));
 		sf::Color Green = sf::Color(70, 190, 63);
 		setColorStem(Green);
 		sf::Color Purple = sf::Color(240, 0, 240);
@@ -171,7 +168,7 @@ void Tree::drawTree(int iteration, const sf::Vector2f& rootPosition, double root
 	}
 	else if (Health == 2)
 	{
-
+		return;
 	}
 	else
 	{
@@ -191,8 +188,11 @@ void Tree::drawTree(int iteration, const sf::Vector2f& rootPosition, double root
 	double scalingFactor = pow(ScalingV, iteration);
 	sf::RectangleShape rect = sf::RectangleShape();
 	//Call function to set new position.
-	double width = Width*scalingFactor;
-	double height = Length*scalingFactor;
+
+	double width = getWidth()*scalingFactor;
+	double height = getHeight()*scalingFactor;
+	//double width = T.TestWidth()*scalingFactor;
+	//double height = T.TestHeight()*scalingFactor;
 	rect.setSize(sf::Vector2f(width, height));
 	sf::Color scaledColor = sf::Color(STColor.r * scalingFactor, STColor.g * scalingFactor, STColor.b * scalingFactor);
 	rect.setFillColor(scaledColor);
@@ -211,6 +211,13 @@ void Tree::drawTree(int iteration, const sf::Vector2f& rootPosition, double root
 }
 void Tree::Render(sf::RenderWindow& window)
 {
+	if (getLoop() < 10)
+	{
+	setWidth(15);
+	setHeight(100);
+	setHealth(1, 0);
+	sf::Color Green = sf::Color(70, 190, 63);
+	setColorStem(Green);
 	sf::RectangleShape rect = sf::RectangleShape(sf::Vector2f(Width, Length));
 	rect.setFillColor(STColor);
 	rect.setPosition(StartPoint);
@@ -227,6 +234,7 @@ void Tree::Render(sf::RenderWindow& window)
 	{
 	window.clear();
 	}
+	}
 }
 void Tree::GrowFlowers(const sf::Vector2f& rootPosition, sf::RenderWindow& window)
 {
@@ -238,41 +246,3 @@ void Tree::GrowFlowers(const sf::Vector2f& rootPosition, sf::RenderWindow& windo
 	window.draw(circle);
 }
 //Rand generator for healthy and unhealthy variable ie angle height width and color;
-int Tree::TestHEandUN()
-{
-	int  x = 0;
-	cout << "Health Value" << endl;
-	while(x < 1 || x > 3)
-	{ 
-	cin >> x;
-	//Thanks StackOverFlow
-	if (!cin) // or if(cin.fail())
-	{
-		// user didn't input a number
-		// reset failbit
-		cin.clear();
-		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		//skip bad input
-	}
-	}
-	return x;
-}
-void Tree::TestStep()
-{
-	cout << "Loop Value" << endl;
-	int  x = 0;
-	while (x < 1 || x > 10)
-	{
-		cin >> x;
-		//Thanks StackOverFlow
-		if (!cin) // or if(cin.fail())
-		{
-			// user didn't input a number
-			// reset failbit
-			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			//skip bad input
-		}
-	}
-	setLoop(x);
-}

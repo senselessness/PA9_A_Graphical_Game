@@ -1,13 +1,17 @@
 ﻿  Tree.cpp
 c:\users\jakem\desktop\pa9_a_graphical_game\tree\tree.cpp(81): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\jakem\desktop\pa9_a_graphical_game\tree\tree.cpp(196): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\jakem\desktop\pa9_a_graphical_game\tree\tree.cpp(197): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
-c:\users\jakem\desktop\pa9_a_graphical_game\tree\tree.cpp(201): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\jakem\desktop\pa9_a_graphical_game\tree\tree.cpp(208): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\jakem\desktop\pa9_a_graphical_game\tree\tree.cpp(209): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\jakem\desktop\pa9_a_graphical_game\tree\tree.cpp(214): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\jakem\desktop\pa9_a_graphical_game\tree\tree.cpp(221): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\jakem\desktop\pa9_a_graphical_game\tree\tree.cpp(222): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\jakem\desktop\pa9_a_graphical_game\tree\tree.cpp(234): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\jakem\desktop\pa9_a_graphical_game\tree\tree.cpp(193): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\jakem\desktop\pa9_a_graphical_game\tree\tree.cpp(194): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
+c:\users\jakem\desktop\pa9_a_graphical_game\tree\tree.cpp(198): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\jakem\desktop\pa9_a_graphical_game\tree\tree.cpp(205): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\jakem\desktop\pa9_a_graphical_game\tree\tree.cpp(206): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\jakem\desktop\pa9_a_graphical_game\tree\tree.cpp(218): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\jakem\desktop\pa9_a_graphical_game\tree\tree.cpp(225): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\jakem\desktop\pa9_a_graphical_game\tree\tree.cpp(226): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\jakem\desktop\pa9_a_graphical_game\tree\tree.cpp(239): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  MainT.cpp
+  Source.cpp
   Tree.vcxproj -> C:\Users\jakem\Desktop\PA9_A_Graphical_Game\Tree\Debug\Tree.exe
   Tree.vcxproj -> C:\Users\jakem\Desktop\PA9_A_Graphical_Game\Tree\Debug\Tree.pdb (Full PDB)
